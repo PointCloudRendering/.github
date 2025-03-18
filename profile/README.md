@@ -9,6 +9,11 @@
 ### Goals:
 
 ### Goals Achieved:
+
+### Additional tools used:
+- Pcx | https://github.com/keijiro/Pcx
+- CloudCompare | https://www.cloudcompare.org/
+- MeshLab | https://www.meshlab.net/
 <!--
 
 **Here are some ideas to get you started:**
