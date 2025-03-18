@@ -1,5 +1,10 @@
-## Hi there 👋
+## Point Cloud Rendering in unity
 
+### Members:
+- Isak Mäkimartti | IsakMakimartti
+- Miro Hannikainen | MiroHann
+- Noel Vähäjylkkä | NoelVahajylkka
+- Märt Rahu | martrahu
 <!--
 
 **Here are some ideas to get you started:**
