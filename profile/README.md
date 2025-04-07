@@ -6,14 +6,21 @@
 - Noel Vähäjylkkä | NoelVahajylkka
 - Märt Rahu | martrahu
 
+### Introduction:
+
 ### Goals:
 
 ### Goals Achieved:
 
-### Additional tools used:
+### Tidbits:
+
+### Additional tools we ended up using:
 - Pcx | https://github.com/keijiro/Pcx
 - CloudCompare | https://www.cloudcompare.org/
 - MeshLab | https://www.meshlab.net/
+
+### Tools we tested but didn't end up using:
+- Point Cloud Unity PLugin | https://ccom.unh.edu/vislab/tools/point_cloud_plugin/
 <!--
 
 **Here are some ideas to get you started:**
