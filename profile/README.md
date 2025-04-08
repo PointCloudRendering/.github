@@ -7,7 +7,7 @@
 - Märt Rahu | martrahu
 
 ## Introduction:
-The idea of this project was to create a Unity application, in which we would import some point cloud data and render it. We were given a bunch of point cloud data files from which we chose those that ran the best on Unity; some of the files were quite large. Another goal was to possibly export the model using glTF. We didn't end up implementing this.
+The idea of this project was to create a Unity application, in which we would import some point cloud data and render it. We were given a bunch of point cloud data files from which we chose those that ran the best on Unity; some of the files were quite large and would require resources we didn't have. Another goal was to possibly export the model using glTF. We didn't end up implementing this.
 
 ## Additional tools or Unity Plugins used:
 - Pcx | https://github.com/keijiro/Pcx
