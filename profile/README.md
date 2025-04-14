@@ -152,7 +152,13 @@ _Image of trees that have been separated and an image of the DB tree with all th
 <br/>
 
 Now all the elements are ready to be exported after doing some cleaning with the merge and segmentation tools. 
-    
+
+## Receiving and Casting Shadows
+To display shadows, the model must be rendered with a shader that participates in Unity’s shadow generation. Depending on the project settings, Unity uses either the Built-in (Standard), Universal Render Pipeline (URP), or High Definition Render Pipeline (HDRP).
+
+If the standard renderer is used, Unity’s built-in surface shaders are responsible for generating shadows. However, these shaders do not automatically take vertex colors into account — the model is instead colored based on its texture. As a result, when using this shader, the model only appears with its Base Color. The surface shader's source code mainly exposes settings related to parameters, while the vertex and fragment functions are handled automatically by Unity. Therefore, modifying the source code did not make it possible to display the model with its vertex colors.
+
+If the newer URP renderer is used, the Lit shader is responsible for generating shadows. This shader also does not natively support vertex colors, so the model is shown only with the Base Color. However, URP allows the use of Shader Graph, where a Vertex Color node can be fed into the fragment section, enabling the model to appear in color. The Lit shader also adjusts the appearance based on lighting. Thus, using URP and Shader Graph, it is possible to show both shadows and vertex colors, and the models react to lighting. However, realistic rendering is still limited due to the lack of normals.
 ## Tidbits:
 ## Conclusion:
 <!--
