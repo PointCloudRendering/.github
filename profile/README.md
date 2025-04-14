@@ -168,8 +168,8 @@ If the newer URP renderer is used, the Lit shader is responsible for generating 
 ## Normals
 Pcx uses Unity’s Mesh class functions SetColors and SetVertices to create the model in Unity. The Mesh class also includes a SetNormals function, and by adding this functionality to the Pcx importer, it would be possible to include normals in the model as well. Another option would be to create a script that approximates the normal of each point based on the positions of its n nearest neighbors (which, as I understand, is the method typically used by LiDAR scanners to generate normals).
 
-## Tidbits:
-## Conclusion:
+# Tidbits:
+# Conclusion:
 <!--
 
 **Here are some ideas to get you started:**
