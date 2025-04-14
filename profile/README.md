@@ -22,7 +22,7 @@ The idea of this project was to create a Unity application in which we would imp
   - This Plugin was originally our other option for bringing point cloud data into Unity. After trying to get it to work with Unity and our data, we were not able to make it work as intended, which is why we decided to use the above-mentioned Pcx instead.
     
 ## Tidbits:
-
+## Conclusion:
 <!--
 
 **Here are some ideas to get you started:**
