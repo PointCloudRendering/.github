@@ -99,7 +99,7 @@ _Image of two trees that are the same cloud._
 ## Extracting trees from a cloud point scene
 Using the before mentioned polyline or segment methods to try and extract trees from a scene would be very time consuming. Instead of using these tools we should start by subsampling a point cloud using Cloudcompares "Subsample a point cloud" tool. This should create a new subsampled model inside the DB tree. Inside the tool there should be a value for "min. space between points" that needs to be adjusted. Lowering the value will make the sampling more accurate at the cost of performance while making it higher will result in a lower quality output.
 
- <img src="./Readme_assets/subsampling_settings.png" height="250"><img src="./Readme_assets/LowerValue_subsample.png" height="250">
+ <img src="./Readme_assets/Subsampling_settings.png" height="250"><img src="./Readme_assets/LowerValue_subsample.png" height="250">
 
 _Image of the the used subsampling settings and the output._
 
