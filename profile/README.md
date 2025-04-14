@@ -6,7 +6,7 @@
 - Noel Vähäjylkkä | NoelVahajylkka
 - Märt Rahu | martrahu
 
-## Introduction:
+# Introduction:
 The idea of this project was to create a Unity application in which we would import some point cloud data and render it. We were given a bunch of point cloud data files from which we chose those that ran the best on Unity; some of the files were quite large and would require resources we didn't have. Another goal was to possibly export the model using glTF. We didn't end up implementing this, due to time constraints.
 
 ## Additional tools or Unity Plugins used:
@@ -153,12 +153,21 @@ _Image of trees that have been separated and an image of the DB tree with all th
 
 Now all the elements are ready to be exported after doing some cleaning with the merge and segmentation tools. 
 
+# Rendering
+
+## Rendering of the model
+The converted *.ply files were imported into Unity using the Pcx plugin. The imported models are rendered in Unity using the default material and shader provided by Pcx. The normals contained in the ply files are not transferred to Unity. The Pcx shader displays each point using its scanned color. This shader does not interact with lighting in any way, nor does it support casting or receiving shadows.
+
 ## Receiving and Casting Shadows
 To display shadows, the model must be rendered with a shader that participates in Unity’s shadow generation. Depending on the project settings, Unity uses either the Built-in (Standard), Universal Render Pipeline (URP), or High Definition Render Pipeline (HDRP).
 
 If the standard renderer is used, Unity’s built-in surface shaders are responsible for generating shadows. However, these shaders do not automatically take vertex colors into account — the model is instead colored based on its texture. As a result, when using this shader, the model only appears with its Base Color. The surface shader's source code mainly exposes settings related to parameters, while the vertex and fragment functions are handled automatically by Unity. Therefore, modifying the source code did not make it possible to display the model with its vertex colors.
 
 If the newer URP renderer is used, the Lit shader is responsible for generating shadows. This shader also does not natively support vertex colors, so the model is shown only with the Base Color. However, URP allows the use of Shader Graph, where a Vertex Color node can be fed into the fragment section, enabling the model to appear in color. The Lit shader also adjusts the appearance based on lighting. Thus, using URP and Shader Graph, it is possible to show both shadows and vertex colors, and the models react to lighting. However, realistic rendering is still limited due to the lack of normals.
+
+## Normals
+Pcx uses Unity’s Mesh class functions SetColors and SetVertices to create the model in Unity. The Mesh class also includes a SetNormals function, and by adding this functionality to the Pcx importer, it would be possible to include normals in the model as well. Another option would be to create a script that approximates the normal of each point based on the positions of its n nearest neighbors (which, as I understand, is the method typically used by LiDAR scanners to generate normals).
+
 ## Tidbits:
 ## Conclusion:
 <!--
