@@ -15,7 +15,7 @@ The idea of this project was to create a Unity application in which we would imp
 - CloudCompare | https://www.cloudcompare.org/
   - Cloudcompare was used to both convert point-cloud data to another format; in our case PLY, and separate different parts of the data into their own objects (segmentation). Cloudcompare had many plugins which turned out to be useful in this.
 - MeshLab | https://www.meshlab.net/
-  - Meshlab was also used for converting files to the correct format, in our case PLY.
+  - Meshlab, like CloudCompare, was also used for converting files to the correct format, in our case PLY.
 
 ## Tools we tested but didn't end up using:
 - Point Cloud Unity Plugin | https://ccom.unh.edu/vislab/tools/point_cloud_plugin/
