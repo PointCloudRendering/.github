@@ -20,6 +20,138 @@ The idea of this project was to create a Unity application in which we would imp
 ## Tools we tested but didn't end up using:
 - Point Cloud Unity Plugin | https://ccom.unh.edu/vislab/tools/point_cloud_plugin/
   - This Plugin was originally our other option for bringing point cloud data into Unity. After trying to get it to work with Unity and our data, we were not able to make it work as intended, which is why we decided to use the above-mentioned Pcx instead.
+
+# Segmenting a cloud point model for use in Unity
+
+## Software
+For segmentation we used the Cloudcompare software. Cloudcompare allows us to pretty effortlessly segment and edit any cloud point model before importing it to Unity. Cloudcompare is quite complex and can do pretty much everything needed to export a scene in usable pieces. 
+
+## Simple Segmentation
+Taking simpler, but rougher cuts out of a cloud point can be done with the segment tool. This tool can be used to draw out cuts with the selection tools inside or by using already drawn polylines made with the polyline drawing tool. 
+
+ <img src="./Readme_assets/Segment.png">  <img src="./Readme_assets/Polyline.png" height="35" width="40"> '
+
+_Segmentation & polyline tool icons_
+
+<br/>
+
+For our case these cuts are the easiest to take with the polyline tool. The polyline tool centers the camera for an eagle eye view of the model where you draw a section that you want to select. Using polyline makes sure the whole section is selected instead of a fragmented piece which can be the case with the selection tools inside the segment tool. 
+
+<br/>
+
+<img src="./Readme_assets/Polyline_selection.png"> 
+
+_Image of polyline selection._
+
+<br/>
+
+<img src="./Readme_assets/Polyline_output.png" height="200"> 
+
+_Image of polyline selection output._
+
+<br/>
+
+The selection tools inside the segment tools can be used for more intricate cuts. 
+
+<br/>
+
+<img src="./Readme_assets/Segmentation_tool_selection.png" height="200"> 
+
+_Image of segmentation tool selection._
+
+<br/>
+
+The main issue of using the polyline tool is that for lower quality models it's harder to make sure the whole object is selected. One example of this would be a building inside a low quality cloud where the walls can be slanted which makes the cutting tools a bit more inconsistent. This can lead to walls of buildings that have gaps in them.
+
+<br/>
+
+<img src="./Readme_assets/Polyline_selection_error.png" height="200"> 
+
+_Image of polyline selection._
+
+<br/>
+
+<img src="./Readme_assets/Polyline_selection_output_error.png" height="200"> 
+
+_Image of building with gaps._
+
+<br/>
+
+## Merging
+
+For segmentation it's important to know that two separate clouds can be merged within Cloudcompare. This is important for cleaning up the results of the automatic tools. For an example I will merge together two separate trees into a single cloud. 
+
+<img src="./Readme_assets/Two_trees_render.png" height="300">
+
+_Image of two trees that are separate clouds._
+
+<br/>
+
+Selecting the two trees inside the DB tree will allow us to use the "Merge multiple clouds" tool which will result in a single cloud that includes both of the selected trees. 
+
+<img src="./Readme_assets/Two_trees_single_render.png" height="300">
+
+_Image of two trees that are the same cloud._
+
+<br/>
+
+
+## Extracting trees from a cloud point scene
+Using the before mentioned polyline or segment methods to try and extract trees from a scene would be very time consuming. Instead of using these tools we should start by subsampling a point cloud using Cloudcompares "Subsample a point cloud" tool. This should create a new subsampled model inside the DB tree. Inside the tool there should be a value for "min. space between points" that needs to be adjusted. Lowering the value will make the sampling more accurate at the cost of performance while making it higher will result in a lower quality output.
+
+ <img src="./Readme_assets/subsampling_settings.png" height="250"><img src="./Readme_assets/LowerValue_subsample.png" height="250">
+
+_Image of the the used subsampling settings and the output._
+
+<br/>
+
+<img src="./Readme_assets/High_subsampling_settings.png" height="250"> <img src="./Readme_assets/HigherValue_subsample.png" height="250">
+
+_Image of the the higher value subsampling settings and the output._
+
+<br/>
+
+
+This makes it possible for us to seperate the off and on ground points into to different clouds. Cuttings the clouds can easily be done using the CSF filter tool inside Cloudcompare. The important thing to note on using CSF is the "Classification threshold". This value needs to be tweaked up or down depending on the elevation changes inside the cloud point data for it to transform the right objects into off ground objects. The main issue with using CSF is that it also cuts off other off ground objects such as cars, light poles, fences etc. If the cloud point data has big changes in elevation some cutting and merging is needed to stitch together the different ground points depending on elevation.
+
+<img src="./Readme_assets/CSF_Filter_Settings.png" height="400">
+
+_Image of CSF settings used for example._
+
+<br/>
+
+<img src="./Readme_assets/OffGroundPoints.png" height="300"> <img src="./Readme_assets/OnGroundPoints.png" height="300">
+
+_Images of off and on ground points._
+
+<br/>
+
+This is where you will have to do some manual cleaning up using the before mentioned segmentation tools and pasting them back onto the desired cloud by merging the cleaned objects. This is also a good time to cut out any building etc you would want separate from the main clouds.
+
+<img src="./Readme_assets/Cleaned_off_groundpoints.png" height="300"> <img src="./Readme_assets/Cleaned_on_groundpoints.png" height="300">
+
+_Image of cleaned off and on ground points._
+
+<br/>
+
+
+ After cleaning your off ground objects should only consist of desired objects. Now we can use the "connected components" to automatically separate the cloud into their own objects by adjusting the "minimum points per component" value. Good value to start off with is atleast 500. This varies depending on the quality and size of the cloud. 
+
+<img src="./Readme_assets/connected components.png" height="200"> <img src="./Readme_assets/Connected_components_output.png" height="400">
+
+_image of the connected components settings and the following output with scalar field colors._
+
+<br/>
+
+Now that the objects are roughly cut out of eachother, we need to attach the smaller pieces back into the correct objects and seperate some of the larger clusters.
+
+<img src="./Readme_assets/Cleaned_trees.png" height="400"> <img src="./Readme_assets/DBtree_trees.png" height="200">
+
+_Image of trees that have been separated and an image of the DB tree with all the elements seperated._
+
+<br/>
+
+Now all the elements are ready to be exported after doing some cleaning with the merge and segmentation tools. 
     
 ## Tidbits:
 ## Conclusion:
