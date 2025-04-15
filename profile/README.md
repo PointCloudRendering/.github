@@ -34,7 +34,7 @@ After importing a pointcloud file you can convert pointcloud data just by select
 
 <br/>
 
-<img src="./Readme_assets/Segment.png"> 
+<img src="./Readme_assets/DBTree_example.PNG"> 
 
 _Image of the DB Tree._
 
