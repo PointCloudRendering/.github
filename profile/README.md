@@ -170,7 +170,7 @@ Pcx uses Unity’s Mesh class functions SetColors and SetVertices to create the 
 
 # Tidbits:
 # Conclusion:
-The main conclusion of this project is that It's feasible to turn a cloud point data into a usable 3D environment inside unity. It can be done quite quickly with the help of the before mentioned tools for a better quality output. The only issue that we ran into was with realsitic lighting for the scene. Lighting can be applied through the use of unity universal render pipeline, but this leads to a lower quality scene in comparison to other methods. This seems like an issue that could have been corrected with time, but for this project we settled with unity universal render pipelines results. 
+The main conclusion of this project is that It's feasible to turn a cloud point data into a usable 3D environment inside unity. It can be done quite quickly with the help of the before mentioned tools for a better quality output. This also allows for a dynamic scene that can be fitted for multiple different uses cases. The only issue that we ran into was with realsitic lighting for the scene. Lighting can be applied through the use of unity universal render pipeline, but this leads to a lower quality scene in comparison to other methods. This seems like an issue that could have been corrected with time, but for this project we settled with unity universal render pipelines results. 
 
 <img src="./Readme_assets/Image of low quality scene with lighting.png" height="400">
 
