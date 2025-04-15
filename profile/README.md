@@ -21,6 +21,29 @@ The idea of this project was to create a Unity application in which we would imp
 - Point Cloud Unity Plugin | https://ccom.unh.edu/vislab/tools/point_cloud_plugin/
   - This Plugin was originally our other option for bringing point cloud data into Unity. After trying to get it to work with Unity and our data, we were not able to make it work as intended, which is why we decided to use the above-mentioned Pcx instead.
 
+# Converting LASer and E57 files to Unity-friendly format
+
+## Software
+We used Cloudcompare and MeshLab to convert the files from .las/.laz/.e57 file formats to .ply file format. We originally tried to convert the files using only Cloudcompare but after encountering multiple issues we found it easier to first convert the file from .las/.laz to .e57 in Cloudcompare and then import the converted file to MeshLab and convert it from .e57 to .ply.
+
+## From LASer to E57
+
+Cloudcompare supports a wide variety of different fileformats natively so one can just open a .las or .laz file from the dropdown file menu.
+
+After importing a pointcloud file you can convert pointcloud data just by selecting the object on the DB Tree and then saving it as .e57 file from the save-button on the hotbar.
+
+<br/>
+
+<img src="./Readme_assets/DBTree_example.png"> 
+
+_Image of the DB Tree._
+
+<br/>
+
+## From E57 to PLY
+
+MeshLab supports .e57 files and the conversion to .ply works well. After importing the .e57 file to MeshLab you can select "Export Mesh As" from the dropdown menu and change the fileformat to .ply from the Resource Manager window that pops up. From our experience all of the files that were converted from .las or .laz to .e57 in Cloudcompare and then from .e57 to .ply in MeshLab worked in Unity without any issues.
+
 # Segmenting a cloud point model for use in Unity
 
 ## Software
